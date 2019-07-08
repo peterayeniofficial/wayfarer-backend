@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - "node_modules"
+install:
+  - npm install
+services:
+  - postgresql
+
+env:
+  global:
+    # codeclimate test reporter
+    - CC_TEST_REPORTER_ID=c8cf39ddedf3d028e4658fdd9e1a1f791d44c399c71a3daebbbcd9f5f0592441
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - npm run build
+script:
+  - npm test
+after_success:
+  - npm run coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
