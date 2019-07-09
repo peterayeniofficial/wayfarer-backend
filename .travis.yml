@@ -12,7 +12,7 @@ services:
 env:
   global:
     # codeclimate test reporter
-    - CC_TEST_REPORTER_ID=c8cf39ddedf3d028e4658fdd9e1a1f791d44c399c71a3daebbbcd9f5f0592441
+    - CC_TEST_REPORTER_ID=050baa19b6b5ce60a279840ea236e87781b2b4805c17f854ae78309d2d6e1293
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
